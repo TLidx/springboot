@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html class="x-admin-sm" xmlns:th="http://www.thymeleaf.org"   xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="stylesheet" th:href="@{/X-admin/css/font.css}">
+    <link rel="stylesheet" th:href="@{/X-admin/css/xadmin.css}">
+    <script th:src="@{/X-admin/lib/layui/layui.js}" charset="utf-8"></script>
+    <script type="text/javascript" th:src="@{/X-admin/js/xadmin.js}"></script>
+    <script th:src="@{/js/jquery-1.8.1.min.js}" charset="utf-8"></script>
+    <script th:inline="javascript">
+        //加载组件
+        layui.config({
+            base: '/js/lay/modules/'
+        }).extend({
+            xmSelect: 'xm-select'
+        }).use(['xmSelect'], function(){
+            var xmSelect = layui.xmSelect;
+        })
+    </script>
+</head>
+<body>
+    <div layout:fragment="content"></div>
+    <th:block layout:fragment="bottomscriptblock"></th:block>
+</body>
+</html>

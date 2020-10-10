@@ -1,0 +1,49 @@
+server:
+  port: 8083
+  tomcat:
+    uri-encoding: utf-8
+spring:
+  #同名覆盖
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/tlioa?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC
+    username: root
+    password: '123456'
+    type: com.alibaba.druid.pool.DruidDataSource
+    
+  redis:
+    host: 127.0.0.1
+    password:
+    port: 6379
+    # 连接超时时间（毫秒）
+    timeout: 5000
+    # Redis数据库索引（默认为0）
+    database: 0
+    session:
+      store-type: redis
+    resources:
+      static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${web.upload-path}
+
+  thymeleaf:
+    prefix: classpath:/templates #指定模板所在目录
+    check-template-location: true #检查模板是否存在
+    cache: false #是否开启缓存 开发环境下：false 线上：true
+    suffix: .html
+    encoding: utf-8
+    mode: HTML5
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
+      static-path-pattern: /static/**
+    static-path-pattern: /**
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  configuration:
+    mapUnderscoreToCamelCase: true
+    global-config:
+      db-config:
+        id-type: uuid
